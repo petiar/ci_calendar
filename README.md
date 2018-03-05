@@ -1,6 +1,6 @@
-###################
+######################
 About this application
-###################
+######################
 
 This application allows users to subscribe to a public Google Calendar event.
 
