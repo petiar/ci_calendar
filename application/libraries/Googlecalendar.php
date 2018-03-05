@@ -12,7 +12,7 @@ class Googlecalendar {
 
   private $id = "6d9bnutuoo30dgnivq738hnnk0@group.calendar.google.com";
   private $service;
-  const CLIENT_SECRET_PATH = 'petiar_secret.json';
+  const CLIENT_SECRET_PATH = 'spm_secret.json';
   protected $CI;
 
   public function __construct()
@@ -28,7 +28,7 @@ class Googlecalendar {
   {
     $client = new Google_Client();
     $client->setApplicationName("SPM Conference Meeting Place");
-    $client->setAuthConfig(__DIR__ . '/../config/' . self::CLIENT_SECRET_PATH);
+    $client->setAuthConfig(__DIR__ . '/../config/' . ENVIRONMENT . '/' . self::CLIENT_SECRET_PATH);
     $client->addScope(array(Google_Service_Calendar::CALENDAR_READONLY));
     return $client;
   }
