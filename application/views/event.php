@@ -14,6 +14,13 @@
 </dl>
 <p>
   <a class="btn btn-primary <?php print ($this->session->userdata('username') && !$this->rsvp_model->user_subscribed($event['id']))?'':'disabled'; ?>" href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I will attend</a>
+    <?php if (!$this->session->userdata('username')): ?>
+    <small>You have to be logged in to be able to RSVP on this event.</small>
+    <?php endif; ?>
+  <?php if ($this->rsvp_model->user_subscribed($event['id'])): ?>
+      <small>You have already RSVPed on this event.</small>
+  <?php endif; ?>
+
 </p>
 <?php if($rsvp): ?>
 <table class="table">
