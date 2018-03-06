@@ -16,7 +16,7 @@ class Install extends CI_Controller {
     $query = <<<SQL
 DROP TABLE IF EXISTS rsvp;
 CREATE TABLE rsvp (
-  id int(11) SERIAL,
+  id integer SERIAL,
   username varchar(16) NOT NULL,
   eventid varchar(64) NOT NULL,
   firstname varchar(32) NOT NULL,
