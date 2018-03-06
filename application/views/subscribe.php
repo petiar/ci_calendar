@@ -49,13 +49,14 @@
       Dates attending
     </div>
     <div class="col-md-9">
-      <?php foreach ($event['days'] as $day): ?>
-      <div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inputDate<?php print $day; ?>" value="1" name="date_<?php print $day; ?>"<?php print set_value('date_' . $day)?' checked':''; ?>>
-        <label class="form-check-label" for="inputDate<?php print $day; ?>"><?php print date('d. m. Y', strtotime($day)); ?></label>
-      </div></div>
-      <?php endforeach; ?>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="date_from">Date from </label>
+            <?php print form_dropdown('date_from', $event['days'], array(set_value('date_from',isset($stored_data['date_from'])?$stored_data['date_from']:NULL)), array('class' => 'form-check-input', 'id' => 'date_from')); ?>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="date_to">Date to </label>
+          <?php print form_dropdown('date_to', $event['days'], array(set_value('date_to',isset($stored_data['date_to'])?$stored_data['date_to']:NULL)), array('class' => 'form-check-input', 'id' => 'date_to')); ?>
+        </div>
     </div>
   </div>
   <div class="form-group">

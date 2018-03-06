@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link" href="<?php print site_url('events'); ?>">Events list</a>
             </li>
         </ul>
-        <!--
+
         <form class="form-inline my-2 my-lg-0" method="post" action="<?php print current_url(); ?>">
             <?php if (isset($_SESSION['username'])): ?>
                 <span class="nav-link">Logged in as <strong><?php print $_SESSION['username']; ?></strong></span>
@@ -44,7 +44,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
         <?php endif; ?>
         </form>
-        -->
     </div>
 </nav>
 </div>

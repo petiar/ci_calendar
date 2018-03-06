@@ -1,3 +1,18 @@
+
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'month')?'active':''; ?>" href="<?php print site_url('events/filter/month'); ?>">This month</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter') == '3months')?'active':''; ?>" href="<?php print site_url('events/filter/3months'); ?>">Next 3 months</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'year')?'active':''; ?>" href="<?php print site_url('events/filter/year'); ?>">This year</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'nyear')?'active':''; ?>" href="<?php print site_url('events/filter/nyear'); ?>">Next year</a>
+    </li>
+</ul>
 <ul class="list-unstyled">
   <?php foreach($data['events'] as $item): ?>
   <li id="<?php print $item['id']; ?>">

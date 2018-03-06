@@ -19,6 +19,10 @@ class Events extends CI_Controller {
     if ($this->input->post('logout')) {
       $this->session->unset_userdata('username');
     }
+
+    if (!$this->session->userdata('filter')) {
+      $this->session->set_userdata(array('filter', 'month'));
+    }
   }
 
   public function index() {
@@ -29,6 +33,11 @@ class Events extends CI_Controller {
     $data['title'] = 'List of events';
     $data['data']['events'] = $this->googlecalendar->getEvents();
     $this->load->view('master', $data);
+  }
+
+  public function filter($filter) {
+    $this->session->set_userdata(array('filter' => $filter));
+    redirect('events');
   }
 
   public function show($eventid) {

@@ -38,7 +38,27 @@ class Googlecalendar {
     return $service;
   }
   public function getEvents() {
-    $events = $this->service->events->listEvents($this->getId());
+    switch ($this->CI->session->userdata('filter')) {
+      case '3months':
+        $timeMin = date(DATE_ATOM);
+        $timeMax = date(DATE_ATOM, strtotime('+3 months'));
+        break;
+      case 'year':
+        $timeMin = date(DATE_ATOM);
+        $timeMax = date(DATE_ATOM, strtotime('Dec 31'));
+        break;
+      case 'nyear':
+        $nextYear = date('Y') + 1;
+        $timeMin = date(DATE_ATOM, strtotime('Jan 1 ' . $nextYear));
+        $timeMax = date(DATE_ATOM, strtotime('Dec 31 ' . $nextYear));
+        break;
+      case 'month':
+      default:
+        $timeMin = date(DATE_ATOM);
+        $timeMax = date(DATE_ATOM, strtotime('last day of this month'));
+        break;
+    }
+    $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax));
     $items = array();
     foreach ($events->getItems() as $event) {
       $items[] = $this->buildEvent($event);
@@ -62,8 +82,13 @@ class Googlecalendar {
       'summary' => $event->summary,
       'start' => $start->format('d. m. Y'),
       'end' => $end->format('d. m. Y'),
-      'days' => date_range($start->format('Y-m-d'), $end->format('Y-m-d')),
     );
+
+    $dates = date_range($start->format('Y-m-d'), $end->format('Y-m-d'));
+
+    foreach ($dates as $date) {
+      $data['days'][$date] = $date;
+    }
 
     return $data;
   }

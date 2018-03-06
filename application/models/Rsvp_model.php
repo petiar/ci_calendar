@@ -11,7 +11,8 @@ class Rsvp_model extends CI_Model {
   public $speaker;
   public $connect;
   public $address;
-  public $days;
+  public $date_from;
+  public $date_to;
   public $comment;
 
   public function save() {
@@ -21,16 +22,11 @@ class Rsvp_model extends CI_Model {
     $this->lastname = $this->input->post('lastname');
     $this->email = $this->input->post('email');
     $this->phone = $this->input->post('phone');
-    $this->speaker = $this->input->post('speaker')?0:1;
-    $this->connect = $this->input->post('connect')?0:1;
+    $this->speaker = $this->input->post('speaker')?1:0;
+    $this->connect = $this->input->post('connect')?1:0;
     $this->address = $this->input->post('address');
-    $days = array();
-    foreach ($_POST as $key => $value) {
-      if (substr($key, 0, 5) == 'date_') {
-        $days[] = substr($key, 5);
-      }
-    }
-    $this->days = json_encode($days);
+    $this->date_from = $this->input->post('date_from');
+    $this->date_to = $this->input->post('date_to');
     $this->comment = $this->input->post('comment');
 
     if ($this->input->post('id')) {

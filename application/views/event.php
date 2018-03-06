@@ -7,9 +7,9 @@
         <dt class="col-sm-3">Location</dt>
         <dd class="col-sm-9"><?php print $event['location']; ?></dd>
     <?php endif; ?>
-    <dt class="col-sm-3">Days</dt>
+    <dt class="col-sm-3">Date</dt>
     <dd class="col-sm-9">
-        <?php print implode(', ', $event['days']); ?>
+        <strong><?php print $event['start'] . ' - ' . $event['end']; ?></strong>
     </dd>
 </dl>
 <p>
