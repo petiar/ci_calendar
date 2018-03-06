@@ -12,6 +12,9 @@
     <li class="nav-item">
         <a class="nav-link <?php print ($this->session->userdata('filter') == 'nyear')?'active':''; ?>" href="<?php print site_url('events/filter/nyear'); ?>">Next year</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'all')?'active':''; ?>" href="<?php print site_url('events/filter/all'); ?>">All</a>
+    </li>
 </ul>
 <ul class="list-unstyled">
   <?php foreach($data['events'] as $item): ?>

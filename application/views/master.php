@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Logout
                 </button>
             <?php endif; ?>
-            <?php if (!isset($_SESSION['username'])): ?>
+            <?php if (!isset($_SESSION['username']) && FALSE): // disabled ?>
             <input class="form-control mr-sm-2" type="search" name="username" placeholder="Username"
                    aria-label="Login">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="this.form.submit();">Login

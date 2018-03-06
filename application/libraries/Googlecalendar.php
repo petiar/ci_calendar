@@ -10,7 +10,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Googlecalendar {
 
-  private $id = "6d9bnutuoo30dgnivq738hnnk0@group.calendar.google.com";
   private $service;
   const CLIENT_SECRET_PATH = 'spm_secret.json';
   protected $CI;
@@ -22,13 +21,13 @@ class Googlecalendar {
     $this->CI =& get_instance();
   }
   public function getId() {
-    return $this->id;
+    return $this->CI->config->item('spm_calendar_id');
   }
   public function getCalendarClient()
   {
     $client = new Google_Client();
     $client->setApplicationName("SPM Conference Meeting Place");
-    $client->setAuthConfig(__DIR__ . '/../config/' . ENVIRONMENT . '/' . self::CLIENT_SECRET_PATH);
+    $client->setDeveloperKey('AIzaSyCxgHQ4b423qsoWkIADcjRmvRTWXvZTguc');
     $client->addScope(array(Google_Service_Calendar::CALENDAR_READONLY));
     return $client;
   }
@@ -53,10 +52,13 @@ class Googlecalendar {
         $timeMax = date(DATE_ATOM, strtotime('Dec 31 ' . $nextYear));
         break;
       case 'month':
-      default:
         $timeMin = date(DATE_ATOM);
         $timeMax = date(DATE_ATOM, strtotime('last day of this month'));
         break;
+      case 'all':
+      default:
+        $timeMin = NULL;
+        $timeMax = NULL;
     }
     $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax));
     $items = array();
