@@ -11,9 +11,9 @@ class Events extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
-    if ($this->input->post('username')) {
+    if ($this->input->get('username')) {
       // lets sanitize the user input
-      $username = $this->input->post('username', TRUE);
+      $username = $this->input->get('username', TRUE);
       $this->session->set_userdata(array('username' => $username));
     }
     if ($this->input->post('logout')) {

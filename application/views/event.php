@@ -19,7 +19,7 @@
 <span class="lead">You have to be logged in to be able to RSVP on this event.</span>
 <?php endif; ?>
 <?php if ($this->rsvp_model->user_subscribed($event['id'])): ?>
-    <span class="lead">You have to be logged in to be able to RSVP on this event.</span>
+    <span class="lead">You did already RSVP on this event.</span>
 <?php endif; ?>
 
 </p>
@@ -35,7 +35,6 @@
             <th scope="col">Speaker</th>
             <th scope="col">Connect</th>
             <th></th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -46,18 +45,12 @@
                 <td><?php print $row->lastname; ?></td>
                 <td><?php print $row->email; ?></td>
                 <td><?php print $row->phone; ?></td>
-                <td><?php print $row->speaker; ?></td>
-                <td><?php print $row->connect; ?></td>
+                <td><?php print $row->speaker?"YES":"NO"; ?></td>
+                <td><?php print $row->connect?"Available to connect":""; ?></td>
                 <td><?php if (($this->rsvp_model->can_edit($row->id)) || spm_is_admin()): ?>
                         <a href="<?php print site_url('events/subscribe/' . $event['id'] . '/' . $row->id); ?>"><i
                                     class="fas fa-edit"></i></a>
                     <?php endif; ?></td>
-                <td>
-                    <?php if (($this->rsvp_model->can_edit($row->id)) || spm_is_admin()): ?>
-                        <a href="<?php print site_url('events/confirm/' . $event['id'] . '/' . $row->id); ?>"><i
-                                    class="fas fa-trash-alt"></i></a>
-                    <?php endif; ?>
-                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

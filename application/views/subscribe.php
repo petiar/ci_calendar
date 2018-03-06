@@ -66,5 +66,9 @@
   <input type="hidden" name="username" value="<?php print isset($stored_data['username'])?$stored_data['username']:$this->session->userdata('username'); ?>" />
   <input type="hidden" name="eventid" value="<?php print $event['id']; ?>" />
   <button type="submit" class="btn btn-primary" name="subscribe">Save</button>
-  <a href="<?php print site_url('events/show/' . $event['id']); ?>" role="button" class="btn btn-secondary" name="subscribe">Cancel</a>
+  <a href="<?php print site_url('events/show/' . $event['id']); ?>" role="button" class="btn btn-secondary" name="cancel">Cancel</a>
+<?php if (isset($stored_data['id'])): ?>
+  <a href="<?php print site_url('events/confirm/' . $event['id'] . '/' . $stored_data['id']) ?>" role="button" class="btn btn-danger" name="cancel"><i class="fas fa-trash-alt"></i> Delete</a>
+<?php endif; ?>
+</td>
 </form>
