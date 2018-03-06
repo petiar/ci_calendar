@@ -8,8 +8,7 @@
 
 class Install extends CI_Controller {
 
-  public function __construct()
-  {
+  public function __construct() {
     parent::__construct();
   }
 
@@ -37,3 +36,4 @@ CREATE TABLE `rsvp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ');
   }
+}
