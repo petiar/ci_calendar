@@ -1,4 +1,5 @@
 <?php
+print $_SERVER['CI_ENV'];
 /**
  * CodeIgniter
  *
