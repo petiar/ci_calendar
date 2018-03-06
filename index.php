@@ -1,5 +1,5 @@
 <?php
-print $_SERVER['CI_ENV'];
+
 /**
  * CodeIgniter
  *
@@ -73,6 +73,7 @@ switch (ENVIRONMENT)
 
 	case 'testing':
 	case 'production':
+    case 'heroku':
 		ini_set('display_errors', 0);
 		if (version_compare(PHP_VERSION, '5.3', '>='))
 		{
