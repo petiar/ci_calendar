@@ -21,7 +21,7 @@ class Events extends CI_Controller {
     }
 
     if (!$this->session->userdata('filter')) {
-      $this->session->set_userdata(array('filter', 'month'));
+      $this->session->set_userdata(array('filter', 'all'));
     }
   }
 
