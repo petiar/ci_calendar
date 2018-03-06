@@ -35,6 +35,7 @@ class Rsvp_model extends CI_Model {
       $this->db->update('rsvp', $this);
     }
     else {
+      unset($this->id);
       $this->db->insert('rsvp', $this);
     }
     return $this->db->insert_id();
