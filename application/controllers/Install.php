@@ -14,9 +14,6 @@ class Install extends CI_Controller {
 
   public function index() {
     $this->db->query('
-    SET NAMES utf8;
-SET time_zone = \'+00:00\';
-
 DROP TABLE IF EXISTS `rsvp`;
 CREATE TABLE `rsvp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
