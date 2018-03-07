@@ -21,7 +21,7 @@ class Googlecalendar {
     $this->CI =& get_instance();
   }
   public function getId() {
-    return $this->CI->config->item('spm_calendar_id');
+    return $this->CI->session->userdata('calendarid')?$this->CI->session->userdata('calendarid'):$this->CI->config->item('spm_calendar_id');
   }
   public function getCalendarClient()
   {

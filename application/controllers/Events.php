@@ -119,4 +119,15 @@ class Events extends CI_Controller {
     }
   }
 
+  public function setcalendarid() {
+    $calendarid = $this->input->post('calendarid');
+    if ($calendarid) {
+      $this->session->set_userdata('calendarid', $calendarid);
+    }
+    else {
+      $this->session->unset_userdata('calendarid');
+    }
+    redirect('events');
+  }
+
 }
