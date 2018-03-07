@@ -63,7 +63,10 @@ class Googlecalendar {
     $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax));
     $items = array();
     foreach ($events->getItems() as $event) {
-      $items[] = $this->buildEvent($event);
+      $item = $this->buildEvent($event);
+      if (preg_match($this->CI->config->item('spm_event_name_regexp'), $item['summary'])) {
+        $items[] = $this->buildEvent($event);
+      }
     }
     return $items;
   }
