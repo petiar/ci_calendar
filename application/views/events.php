@@ -15,6 +15,9 @@
     <li class="nav-item">
         <a class="nav-link <?php print ($this->session->userdata('filter') == 'all')?'active':''; ?>" href="<?php print site_url('events/filter/all'); ?>">All</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link <?php print ($this->session->userdata('filter_conference') == 'on')?'active':''; ?>" href="<?php print site_url('events/filter/conference'); ?>">Only display conferences</a>
+    </li>
 </ul>
 <ul class="list-unstyled">
   <?php foreach($data['events'] as $item): ?>

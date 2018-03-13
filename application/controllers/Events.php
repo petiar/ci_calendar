@@ -36,7 +36,18 @@ class Events extends CI_Controller {
   }
 
   public function filter($filter) {
-    $this->session->set_userdata(array('filter' => $filter));
+    if ($filter == 'conference') {
+      if ($this->session->userdata('filter_conference') == 'on') {
+        $this->session->set_userdata(array('filter_conference' => 'off'));
+      }
+      else {
+        $this->session->set_userdata(array('filter_conference' => 'on'));
+      }
+      // print $this->session->userdata('filter_conference');die();
+    }
+    else {
+      $this->session->set_userdata(array('filter' => $filter));
+    }
     redirect('events');
   }
 
