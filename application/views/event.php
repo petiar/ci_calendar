@@ -56,3 +56,6 @@
         </tbody>
     </table>
 <?php endif; ?>
+<hr>
+<h3>Debug info</h3>
+<pre><?php print_r($event); ?></pre>

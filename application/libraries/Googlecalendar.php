@@ -51,6 +51,7 @@ class Googlecalendar {
         $nextYear = date('Y') + 1;
         $timeMin = date(DATE_ATOM, strtotime('Jan 1 ' . $nextYear));
         $timeMax = date(DATE_ATOM, strtotime('Dec 31 ' . $nextYear));
+          //print $timeMin;
         break;
       case 'month':
         $timeMin = date(DATE_ATOM);
@@ -69,7 +70,10 @@ class Googlecalendar {
         $summary_filter = '/(.)*/';
     }
     try {
+      // print $timeMin;
+      // print $timeMax;
       $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax));
+      // print_r($events);
     }
     catch (Exception $e) {
       $message = json_decode($e->getMessage());
@@ -94,35 +98,50 @@ class Googlecalendar {
   private function buildEvent($event) {
     $this->CI->load->helper('date');
     if ($event->start) {
-      $start = new DateTime($event->start->getDateTime());
+      // if the start->getDate() is set, then it is all-day event
+      if ($event->start->getDate()) {
+        $start = new DateTime($event->start->getDate());
+      }
+      else {
+        $start = new DateTime($event->start->getDateTime());
+      }
     }
     else {
       // we can't display an event if it has not start date
       return array();
     }
     if ($event->end) {
-      $end = new DateTime($event->end->getDateTime());
+      // if the end->getDate() is specified, then it is all-day event
+      if ($event->end->getDate()) {
+        // TODO: subtract one day because as per Google documentation, end date is exclusive in case of all-day event
+        $end = new DateTime($event->end->getDate());
+        $end->sub(new DateInterval('P1D'));
+      }
+      else {
+        $end = new DateTime($event->end->getDateTime());
+      }
     }
     else {
       // we can't display an event if it has not start date
       return array();
     }
 
-
     $data = array(
       'id' => $event->getId(),
       'description' => $event->description,
       'location' => $event->location,
       'summary' => $event->summary,
-      'start' => $start->format('d. m. Y'),
-      'end' => $end->format('d. m. Y'),
+      'start' => $start->format($this->CI->config->item('spm_date_format')),
+      'end' => $end->format($this->CI->config->item('spm_date_format')),
     );
 
-    $dates = date_range($start->format('Y-m-d'), $end->format('Y-m-d'));
+    $dates = date_range($start->format($this->CI->config->item('spm_date_format')), $end->format($this->CI->config->item('spm_date_format')));
 
     foreach ($dates as $date) {
       $data['days'][$date] = $date;
     }
+
+    $data['raw_data'] = $event;
 
     return $data;
   }
