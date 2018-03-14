@@ -72,7 +72,7 @@ class Googlecalendar {
     try {
       // print $timeMin;
       // print $timeMax;
-      $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax));
+      $events = $this->service->events->listEvents($this->getId(),array('timeMin' => $timeMin, 'timeMax' => $timeMax, 'orderBy' => 'startTime', 'singleEvents' => TRUE));
       // print_r($events);
     }
     catch (Exception $e) {
@@ -84,6 +84,9 @@ class Googlecalendar {
       $item = $this->buildEvent($event);
       if ($item) {
         if (preg_match($summary_filter, $item['summary'])) {
+          if ($this->CI->session->userdata('filter_conference') == 'on') {
+            $item['summary'] = trim(preg_replace('/^Conference:/', '', $item['summary']));
+          }
           $items[] = $item;
         }
       }
