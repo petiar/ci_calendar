@@ -47,12 +47,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </nav>
 </div>
 <div class="container">
+    <!--
     <form class="form-inline my-2 my-lg-0" method="post" action="<?php print site_url('events/setcalendarid'); ?>">
         CalendarID:&nbsp;<input style="width: 80%;" class="form-control mr-sm-2" name="calendarid" placeholder="Calendar ID" value="<?php print $this->session->userdata('calendarid')?$this->session->userdata('calendarid'):''; ?>"
                aria-label="Set">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="this.form.submit();">Set</button>
     </form>
-
+    -->
     <div class="page-header">
         <div class="row">
             <div class="col-md-12">

@@ -82,12 +82,21 @@ class Googlecalendar {
     $items = array();
     foreach ($events->getItems() as $event) {
       $item = $this->buildEvent($event);
+      $item['user_subscribed'] = $this->CI->rsvp_model->user_subscribed($item['id'], $this->CI->session->userdata('username'));
+      $item['subscribed_count'] = $this->CI->rsvp_model->count($item['id']);
       if ($item) {
         if (preg_match($summary_filter, $item['summary'])) {
           if ($this->CI->session->userdata('filter_conference') == 'on') {
             $item['summary'] = trim(preg_replace('/^Conference:/', '', $item['summary']));
           }
-          $items[] = $item;
+          if ($this->CI->session->userdata('filter_my_events') == 'on') {
+            if ($item['user_subscribed']) {
+              $items[] = $item;
+            }
+          }
+          else {
+            $items[] = $item;
+          }
         }
       }
     }
