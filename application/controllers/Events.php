@@ -30,7 +30,7 @@ class Events extends CI_Controller {
     $this->load->model('rsvp_model');
 
     $data['view'] = 'events';
-    $data['title'] = 'List of events';
+    $data['title'] = NULL;
     $data['data']['events'] = $this->googlecalendar->getEvents();
     $this->load->view('master', $data);
   }

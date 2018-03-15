@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="page-header">
         <div class="row">
             <div class="col-md-12">
-                <h1><?php print $title; ?></h1>
+                <h3 class="display-4"><?php print $title; ?></h3>
             </div>
         </div>
     </div>

@@ -13,13 +13,13 @@
     </dd>
 </dl>
 <p>
-    <a class="btn btn-primary <?php print ($this->session->userdata('username') && !$this->rsvp_model->user_subscribed($event['id'])) ? '' : 'disabled'; ?>"
-       href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I will attend</a>
+    <a class="btn btn-outline-warning <?php print ($this->session->userdata('username') && !$this->rsvp_model->user_subscribed($event['id'])) ? '' : 'disabled'; ?>"
+       href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I want to participate</a>
     <?php if (!$this->session->userdata('username')): ?>
-<span class="lead">You have to be logged in to be able to RSVP on this event.</span>
+<span class="lead">You have to be logged in to be able to participate on this event.</span>
 <?php endif; ?>
 <?php if ($this->rsvp_model->user_subscribed($event['id'])): ?>
-    <span class="lead">You did already RSVP on this event.</span>
+    <span class="lead">You already participate on this event.</span>
 <?php endif; ?>
 
 </p>
