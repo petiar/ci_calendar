@@ -13,15 +13,15 @@
     </dd>
 </dl>
 <p>
-    <a class="btn btn-outline-warning <?php print ($this->session->userdata('username') && !$this->rsvp_model->user_subscribed($event['id'])) ? '' : 'disabled'; ?>"
-       href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I want to participate</a>
+    <?php if (!$event['user_subscribed'] && $this->session->userdata('username')): ?>
+        <a class="btn btn-success" href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I want to participate</a>
+    <?php endif; ?>
     <?php if (!$this->session->userdata('username')): ?>
-<span class="lead">You have to be logged in to be able to participate on this event.</span>
-<?php endif; ?>
-<?php if ($this->rsvp_model->user_subscribed($event['id'])): ?>
-    <span class="lead">You already participate on this event.</span>
-<?php endif; ?>
-
+        <span class="lead">You have to be logged in to be able to participate on this event.</span>
+    <?php endif; ?>
+    <?php if ($event['user_subscribed']): ?>
+        <span class="lead">You already participate in this event.</span>
+    <?php endif; ?>
 </p>
 <?php if ($rsvp): ?>
     <table class="table">

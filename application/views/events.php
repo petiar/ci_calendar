@@ -33,19 +33,19 @@
         <p class="text-secondary"><?php print $item['description']; ?></p>
       </div>
       <div class="col-sm-3">
-          <?php if (!$item['user_subscribed']): ?>
-          <a class="btn btn-outline-warning btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button">I want to participate</a>
+          <?php if (!$item['user_subscribed'] && $this->session->userdata('username')): ?>
+          <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button">I want to participate</a>
           <?php endif; ?>
-        <a class="btn btn-outline-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button">More info</a>
+        <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button">More info</a>
           <p class="text-center"><small>
             <?php if ($item['user_subscribed'] && ($item['subscribed_count'] > 1)): ?>
-                <strong>You</strong> and <?php print $item['subscribed_count'] - 1; ?> others subscribed.
+                <strong>You</strong> and <?php print $item['subscribed_count'] - 1; ?> SPM members participate.
             <?php elseif ($item['user_subscribed'] && ($item['subscribed_count'] = 1)): ?>
-                Only you are subscribed.
+                Only you participate.
             <?php elseif ($item['subscribed_count']): ?>
-              <?php print $item['subscribed_count']; ?> users subscribed.
+              <?php print $item['subscribed_count']; ?> SPM members participate.
             <?php else: ?>
-                No one is subscribed to this event.
+                No SPM members participate.
             <?php endif; ?>
               </small></p>
         <!-- <a class="btn btn-outline-success float-right <?php print $this->session->userdata('username')?'':'disabled'; ?>" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button">Subscribe</a> -->
