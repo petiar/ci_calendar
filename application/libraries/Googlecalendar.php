@@ -37,8 +37,8 @@ class Googlecalendar {
     $service = new Google_Service_Calendar($client);
     return $service;
   }
-  public function getEvents() {
-    switch ($this->CI->session->userdata('filter')) {
+  public function getEvents($filter = NULL) {
+    switch ($filter?$filter:$this->CI->session->userdata('filter')) {
       case '3months':
         $timeMin = date(DATE_ATOM);
         $timeMax = date(DATE_ATOM, strtotime('+3 months'));
@@ -93,6 +93,11 @@ class Googlecalendar {
     }
     return $items;
   }
+
+  public function getEventsCount($filter) {
+    return count($this->getEvents($filter));
+  }
+
   public function getEvent($id)
   {
     return $this->buildEvent($this->service->events->get($this->getId(), $id));

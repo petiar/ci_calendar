@@ -1,19 +1,20 @@
 
 <ul class="nav navbar nav-pills">
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter') == 'month')?'active':''; ?>" href="<?php print site_url('events/filter/month'); ?>">This month</a>
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'month')?'active':''; ?>" href="<?php print site_url('events/filter/month'); ?>">This month (<?php print $this->googlecalendar->getEventsCount('month'); ?>)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter') == '3months')?'active':''; ?>" href="<?php print site_url('events/filter/3months'); ?>">Next 3 months</a>
+
+        <a class="nav-link <?php print ($this->session->userdata('filter') == '3months')?'active':''; ?>" href="<?php print site_url('events/filter/3months'); ?>">Next 3 months (<?php print $this->googlecalendar->getEventsCount('3months'); ?>)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter') == 'year')?'active':''; ?>" href="<?php print site_url('events/filter/year'); ?>">This year</a>
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'year')?'active':''; ?>" href="<?php print site_url('events/filter/year'); ?>">This year (<?php print $this->googlecalendar->getEventsCount('year'); ?>)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter') == 'nyear')?'active':''; ?>" href="<?php print site_url('events/filter/nyear'); ?>">Next year</a>
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'nyear')?'active':''; ?>" href="<?php print site_url('events/filter/nyear'); ?>">Next year (<?php print $this->googlecalendar->getEventsCount('nyear'); ?>)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter') == 'all')?'active':''; ?>" href="<?php print site_url('events/filter/all'); ?>">All</a>
+        <a class="nav-link <?php print ($this->session->userdata('filter') == 'all')?'active':''; ?>" href="<?php print site_url('events/filter/all'); ?>">All (<?php print $this->googlecalendar->getEventsCount('all'); ?>)</a>
     </li>
     <li class="nav-item">
         <a class="nav-link <?php print ($this->session->userdata('filter_my_events') == 'on')?'active':''; ?>" href="<?php print site_url('events/filter/myevents'); ?>">My events</a>
@@ -30,11 +31,10 @@
         <p class="text-secondary"><?php print $item['description']; ?></p>
       </div>
       <div class="col-sm-3">
-
           <?php if (!$item['user_subscribed'] && $this->session->userdata('username')): ?>
           <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button"><i class="fas fa-comments"></i> I want to meet up</a>
           <?php endif; ?>
-        <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button"><i class="fas fa-info-circle"></i> More info</a>
+        <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button"><i class="fas fa-info-circle"></i> Who's attending?</a>
           <p class="text-center"><small>
             <?php if ($item['user_subscribed'] && ($item['subscribed_count'] > 1)): ?>
                 <strong>You</strong> and <?php print $item['subscribed_count'] - 1; ?> SPM member(s) are participating.
