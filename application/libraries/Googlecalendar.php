@@ -77,9 +77,8 @@ class Googlecalendar {
       $item = $this->buildEvent($event);
       if ($item) {
         if (preg_match($this->CI->config->item('spm_event_name_regexp'), $item['summary'])) {
-          if ($this->CI->session->userdata('filter_conference') == 'on') {
-            $item['summary'] = trim(preg_replace('/^Conference:/', '', $item['summary']));
-          }
+          // remove the Conference string
+          $item['summary'] = trim(preg_replace($this->CI->config->item('spm_event_name_regexp'), '', $item['summary']));
           if ($this->CI->session->userdata('filter_my_events') == 'on') {
             if ($item['user_subscribed']) {
               $items[] = $item;
