@@ -2,7 +2,7 @@
 
 // This is the regular expression which we can use to filter events we want to display.
 // This will be aplied agains event summary field.
-$config['spm_event_name_regexp'] = '/(.)*/';
+$config['spm_event_name_regexp'] = '/^Conference/';
 
 $config['spm_application_name'] = 'SPM Events Calendar';
 $config['spm_superuser'] = 'administrator';

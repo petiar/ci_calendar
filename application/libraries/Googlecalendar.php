@@ -59,15 +59,8 @@ class Googlecalendar {
         break;
       case 'all':
       default:
-        $timeMin = NULL;
+        $timeMin = date(DATE_ATOM);
         $timeMax = NULL;
-    }
-    switch ($this->CI->session->userdata('filter_conference')) {
-      case 'on':
-        $summary_filter = '/^Conference/';
-        break;
-      default:
-        $summary_filter = '/(.)*/';
     }
     try {
       // print $timeMin;
@@ -83,7 +76,7 @@ class Googlecalendar {
     foreach ($events->getItems() as $event) {
       $item = $this->buildEvent($event);
       if ($item) {
-        if (preg_match($summary_filter, $item['summary'])) {
+        if (preg_match($this->CI->config->item('spm_event_name_regexp'), $item['summary'])) {
           if ($this->CI->session->userdata('filter_conference') == 'on') {
             $item['summary'] = trim(preg_replace('/^Conference:/', '', $item['summary']));
           }

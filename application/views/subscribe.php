@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Place of stay</label>
+    <label for="inputAddress">Hotel</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" value="<?php echo set_value('address', isset($stored_data['address'])?$stored_data['address']:NULL); ?>">
   </div>
   <div class="form-row">
@@ -66,8 +66,8 @@
   <input type="hidden" name="id" value="<?php print isset($stored_data['id'])?$stored_data['id']:''; ?>" />
   <input type="hidden" name="username" value="<?php print isset($stored_data['username'])?$stored_data['username']:$this->session->userdata('username'); ?>" />
   <input type="hidden" name="eventid" value="<?php print $event['id']; ?>" />
-  <button type="submit" class="btn btn-primary" name="subscribe">Save</button>
-  <a href="<?php print site_url('events/show/' . $event['id']); ?>" role="button" class="btn btn-secondary" name="cancel">Cancel</a>
+<button type="submit" class="btn btn-primary" name="subscribe"><i class="fas fa-check-circle"></i> Save</button>
+  <a href="<?php print site_url('events/show/' . $event['id']); ?>" role="button" class="btn btn-secondary" name="cancel"><i class="fas fa-ban"></i> Cancel</a>
 <?php if (isset($stored_data['id'])): ?>
   <a href="<?php print site_url('events/confirm/' . $event['id'] . '/' . $stored_data['id']) ?>" role="button" class="btn btn-danger" name="cancel"><i class="fas fa-trash-alt"></i> Delete</a>
 <?php endif; ?>

@@ -4,7 +4,7 @@
         <dd class="col-sm-9"><?php print $event['description']; ?></dd>
     <?php endif; ?>
     <?php if (isset($event['location'])): ?>
-        <dt class="col-sm-3">Location</dt>
+        <dt class="col-sm-3">Hotel</dt>
         <dd class="col-sm-9"><?php print $event['location']; ?></dd>
     <?php endif; ?>
     <dt class="col-sm-3">Date</dt>
@@ -13,14 +13,15 @@
     </dd>
 </dl>
 <p>
+    <a class="btn btn-primary" href="<?php print site_url('events'); ?>" role="button"><i class="fas fa-list-ul"></i> Show all conferences</a>
     <?php if (!$event['user_subscribed'] && $this->session->userdata('username')): ?>
-        <a class="btn btn-success" href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button">I want to participate</a>
+        <a class="btn btn-success" href="<?php print site_url('events/subscribe/' . $event['id']); ?>" role="button"><i class="fas fa-comments"></i> I want to meet up</a>
     <?php endif; ?>
     <?php if (!$this->session->userdata('username')): ?>
         <span class="lead">You have to be logged in to be able to participate on this event.</span>
     <?php endif; ?>
     <?php if ($event['user_subscribed']): ?>
-        <span class="lead">You already participate in this event.</span>
+        <span class="lead">You are already participating.</span>
     <?php endif; ?>
 </p>
 <?php if ($rsvp): ?>

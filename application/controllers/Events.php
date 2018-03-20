@@ -89,7 +89,6 @@ class Events extends CI_Controller {
     $this->form_validation->set_rules('lastname', 'Last name', 'required');
     $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
     $this->form_validation->set_rules('phone', 'Phone number', 'required');
-    $this->form_validation->set_rules('address', 'Place of stay', 'required');
 
     if ($this->form_validation->run() != FALSE) {
       if ($this->rsvp_model->save()) {

@@ -16,9 +16,6 @@
         <a class="nav-link <?php print ($this->session->userdata('filter') == 'all')?'active':''; ?>" href="<?php print site_url('events/filter/all'); ?>">All</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php print ($this->session->userdata('filter_conference') == 'on')?'active':''; ?>" href="<?php print site_url('events/filter/conference'); ?>">Only display conferences</a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link <?php print ($this->session->userdata('filter_my_events') == 'on')?'active':''; ?>" href="<?php print site_url('events/filter/myevents'); ?>">My events</a>
     </li>
 </ul>
@@ -33,19 +30,20 @@
         <p class="text-secondary"><?php print $item['description']; ?></p>
       </div>
       <div class="col-sm-3">
+
           <?php if (!$item['user_subscribed'] && $this->session->userdata('username')): ?>
-          <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button">I want to participate</a>
+          <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button"><i class="fas fa-comments"></i> I want to meet up</a>
           <?php endif; ?>
-        <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button">More info</a>
+        <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button"><i class="fas fa-info-circle"></i> More info</a>
           <p class="text-center"><small>
             <?php if ($item['user_subscribed'] && ($item['subscribed_count'] > 1)): ?>
-                <strong>You</strong> and <?php print $item['subscribed_count'] - 1; ?> SPM members participate.
+                <strong>You</strong> and <?php print $item['subscribed_count'] - 1; ?> SPM member(s) are participating.
             <?php elseif ($item['user_subscribed'] && ($item['subscribed_count'] = 1)): ?>
-                Only you participate.
+                Only you are participating.
             <?php elseif ($item['subscribed_count']): ?>
-              <?php print $item['subscribed_count']; ?> SPM members participate.
+              <?php print $item['subscribed_count']; ?> SPM member(s) are participating.
             <?php else: ?>
-                No SPM members participate.
+                No SPM members are participating.
             <?php endif; ?>
               </small></p>
         <!-- <a class="btn btn-outline-success float-right <?php print $this->session->userdata('username')?'':'disabled'; ?>" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button">Subscribe</a> -->

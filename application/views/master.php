@@ -31,9 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form class="form-inline my-2 my-lg-0" method="post" action="<?php print current_url(); ?>">
             <?php if (isset($_SESSION['username'])): ?>
                 <span class="nav-link">Logged in as <strong><?php print $_SESSION['username']; ?></strong></span>
-                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" name="logout" value="logout">
-                    Logout
-                </button>
             <?php endif; ?>
             <?php if (!isset($_SESSION['username']) && FALSE): // disabled ?>
             <input class="form-control mr-sm-2" type="search" name="username" placeholder="Username"
