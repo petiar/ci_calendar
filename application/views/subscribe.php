@@ -19,10 +19,12 @@
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
       <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="<?php echo set_value('email')?set_value('email'):(isset($stored_data['email'])?$stored_data['email']:''); ?>">
+        <small>Will not be displayed if you do not want to connect.</small>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPhone">Phone number</label>
       <input type="text" class="form-control" id="inputPhone" placeholder="Phone number" name="phone" value="<?php echo set_value('phone')?set_value('phone'):(isset($stored_data['phone'])?$stored_data['phone']:''); ?>">
+        <small>Will not be displayed if you do not want to connect.</small>
     </div>
   </div>
   <div class="form-row">
@@ -43,6 +45,7 @@
   <div class="form-group">
     <label for="inputAddress">Hotel</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" value="<?php echo set_value('address', isset($stored_data['address'])?$stored_data['address']:NULL); ?>">
+      <small>Will not be displayed if you do not want to connect.</small>
   </div>
   <div class="form-row">
     <div class="col-md-3">
@@ -61,7 +64,8 @@
   </div>
   <div class="form-group">
     <label for="inputComment">Comment</label>
-    <textarea class="form-control" id="inputComment" placeholder="Your comments..." name="comment"><?php echo set_value('comment', isset($stored_data['comment'])?$stored_data['comment']:NULL); ?></textarea>
+    <textarea class="form-control" id="inputComment" placeholder="Your comments..." name="comment" onkeyup="countChar(this)"><?php echo set_value('comment', isset($stored_data['comment'])?$stored_data['comment']:NULL); ?></textarea>
+      <small><span id="charNum">100</span> characters remaining.</small>
   </div>
   <input type="hidden" name="id" value="<?php print isset($stored_data['id'])?$stored_data['id']:''; ?>" />
   <input type="hidden" name="username" value="<?php print isset($stored_data['username'])?$stored_data['username']:$this->session->userdata('username'); ?>" />

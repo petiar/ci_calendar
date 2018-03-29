@@ -10,6 +10,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-MmFGSHKWNFDZYlwAtfeY6ThYRrYajzX+v7G4KVORjlWAG0nLhv0ULnFETyWGeQiU" crossorigin="anonymous">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        function countChar(val) {
+            var len = val.value.length;
+            if (len >= 100) {
+                val.value = val.value.substring(0, 100);
+            } else {
+                $('#charNum').text(100 - len);
+            }
+        };
+    </script>
     <link href="/css/style.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

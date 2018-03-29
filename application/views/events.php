@@ -32,7 +32,7 @@
       </div>
       <div class="col-sm-3">
           <?php if (!$item['user_subscribed'] && $this->session->userdata('username')): ?>
-          <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button"><i class="fas fa-comments"></i> I want to meet up</a>
+          <a class="btn btn-success btn-block" href="<?php print site_url('events/subscribe/' . $item['id']); ?>" role="button"><i class="fas fa-comments"></i> I want to meet up!</a>
           <?php endif; ?>
         <a class="btn btn-primary btn-block" href="<?php print site_url('events/show/' . $item['id']); ?>" role="button"><i class="fas fa-info-circle"></i> Who's attending?</a>
           <p class="text-center"><small>
