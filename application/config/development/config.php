@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://calendar.local/';
+$config['base_url'] = 'http://spm-events-list.lndo.site:8000/';
 
 /*
 |--------------------------------------------------------------------------

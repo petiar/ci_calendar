@@ -1,0 +1,6 @@
+name: spm-events-list
+recipe: lamp
+config:
+  webroot: .
+  php: '7.1'
+  database: mysql:5.7

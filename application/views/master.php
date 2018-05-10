@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-MmFGSHKWNFDZYlwAtfeY6ThYRrYajzX+v7G4KVORjlWAG0nLhv0ULnFETyWGeQiU" crossorigin="anonymous">
-
+    <link href="<?php print base_url('css/style.css'); ?>" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </form>
         <?php endif; ?>
         </form>
+        <div class="copyright"><a href="https://firstlinesoftware.com/">Powered by<br><img class="logo" src="<?php print base_url('css/img/logo_landscape.png'); ?>" /></a></div>
     </div>
 </nav>
 </div>
