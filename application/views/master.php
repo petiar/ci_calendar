@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="<?php print site_url('events'); ?>">Events list</a>
+                <a class="nav-link" href="<?php print site_url('events'); ?>">Back to Events list</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" method="post" action="<?php print current_url(); ?>">
